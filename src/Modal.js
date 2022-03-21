@@ -380,7 +380,7 @@ const Modal = () => {
                     ...data,
                     defendant: {
                       ...data.defendant,
-                      pc: e.target.value,
+                      bank: e.target.value,
                     },
                   })
                 }
@@ -396,7 +396,7 @@ const Modal = () => {
                     ...data,
                     defendant: {
                       ...data.defendant,
-                      bank: e.target.value,
+                      bic: e.target.value,
                     },
                   })
                 }
