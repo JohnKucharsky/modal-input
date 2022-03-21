@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 
 const Modal = () => {
+  const [pochAdr, setPochAdr] = useState(false);
+  const [open, setOpen] = useState(true);
+  console.log(open);
   const initialState = {
     uid: "",
     case_id: "",
@@ -25,7 +28,7 @@ const Modal = () => {
       bank: "",
       bic: "",
       kc: "",
-      type: 1,
+      type: 0,
     },
     start: "string",
     end: "string",
@@ -34,8 +37,11 @@ const Modal = () => {
   const [data, setData] = useState(initialState);
   console.log(data);
   return (
-    <div>
-      <section>
+    <div onClick={() => setOpen(false)}>
+      <section
+        className={open ? "modal open" : "modal"}
+        onClick={(e) => e.stopPropagation()}
+      >
         <header>Создать дело</header>
         <div className="top-flex">
           <div className="left-top">
@@ -96,7 +102,7 @@ const Modal = () => {
                     }
                     type="checkbox"
                     name="urlico"
-                    value="urlico"
+                    value="1"
                   />
                   <label style={{ marginLeft: "1rem" }} htmlFor="urlico">
                     Юридическое лицо
@@ -242,7 +248,7 @@ const Modal = () => {
                   }
                   type="checkbox"
                   name="otv-urlico"
-                  value="otv-urlico"
+                  value="1"
                 />
                 <label style={{ marginLeft: "1rem" }} htmlFor="urlico">
                   Юридическое лицо
@@ -318,28 +324,34 @@ const Modal = () => {
                 Empty
               </label>
               <div className="checkbox-x">
-                <input type="checkbox" name="pocht-ur-address" />
+                <input
+                  onChange={() => setPochAdr(!pochAdr)}
+                  type="checkbox"
+                  name="pocht-ur-address"
+                />
                 <label style={{ marginLeft: "1rem" }} htmlFor="ur-address">
                   Почтовый адрес совпадает с юридическим
                 </label>
               </div>
             </div>
-            <div>
-              <label htmlFor="pocht-address">Почтовый адрес</label>
-              <input
-                onChange={(e) =>
-                  setData({
-                    ...data,
-                    defendant: {
-                      ...data.defendant,
-                      mailing_address: e.target.value,
-                    },
-                  })
-                }
-                type="text"
-                name="pocht-address"
-              />
-            </div>
+            {!pochAdr && (
+              <div>
+                <label htmlFor="pocht-address">Почтовый адрес</label>
+                <input
+                  onChange={(e) =>
+                    setData({
+                      ...data,
+                      defendant: {
+                        ...data.defendant,
+                        mailing_address: e.target.value,
+                      },
+                    })
+                  }
+                  type="text"
+                  name="pocht-address"
+                />
+              </div>
+            )}
             <div>
               <label htmlFor="kpp">КПП</label>
               <input
@@ -421,7 +433,7 @@ const Modal = () => {
               />
             </div>
             <div className="buttons">
-              <button>Отмена</button>
+              <button onClick={() => setOpen(false)}>Отмена</button>
               <button>Создать</button>
             </div>
           </div>

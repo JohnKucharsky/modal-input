@@ -13,15 +13,27 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
-section {
+.app {
+  height: 85vh;
+
+  margin: 5rem auto 0;
+}
+.modal {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  border-radius: 0.3rem;
+
   max-width: 950px;
-  margin: 10rem auto;
+  margin: 5rem auto 0;
+  display: none;
+}
+.open {
+  display: block;
 }
 main {
+  padding: 0.5rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 100%;
-
   gap: 2rem;
 }
 
@@ -44,6 +56,7 @@ input {
   flex-direction: column;
 }
 .top-flex {
+  padding: 0.5rem;
   display: flex;
   justify-content: space-between;
 
@@ -68,6 +81,7 @@ input {
   justify-content: space-between;
 }
 header {
+  border-radius: 0.3rem 0.3rem 0 0;
   background: rgba(85, 110, 230, 0.25);
   font-size: 2rem;
   height: 145px;
@@ -78,6 +92,7 @@ header {
 .checkbox-x {
   width: 250px;
   display: flex;
+  margin-bottom: 0.5rem;
   justify-content: flex-start !important;
   align-items: center;
 }
@@ -100,6 +115,10 @@ label {
   font-size: 13px;
   font-weight: 400;
   border-radius: 3px;
+}
+.buttons button:hover {
+  scale: 0.98;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 .buttons button:nth-child(1) {
   border: 1px solid #74788d;

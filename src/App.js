@@ -2,7 +2,7 @@ import Modal from "./Modal";
 
 function App() {
   return (
-    <div>
+    <div className="app">
       <Modal />
     </div>
   );
